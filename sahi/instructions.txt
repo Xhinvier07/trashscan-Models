@@ -1,0 +1,44 @@
+#NOTES
+
+use "python detect.py --slice_size 1024" to specify the slice size
+use "python detect.py" for automatic slicing
+
+image directory = image will be used for predictions, not part of the dataset
+models directory = yolo models that can be used
+runs directory = yolo and sahi inferences outputs
+- runs/detect/predict# = yolo inferences
+- runs/predict/exp# = sahi inferences
+- charts = charts plotting of the results (box size distrib, confidence distrib, detection counts, detection summary)
+
+
+
+Explanation for Slicing
+
+For 1920x1080 image with 512x512 pixel slices and 0.2 overlap ratio:
+First, the algorithm calculates the actual overlap in pixels:
+Horizontal overlap: 512 × 0.2 = 102 pixels
+Vertical overlap: 512 × 0.2 = 102 pixels
+It starts from the top-left (0,0) and creates slices row by row:
+Row 1 (y=0):
+Slice 1: (0,0,512,512)
+Slice 2: (410,0,922,512) [starts at 512-102=410]
+Slice 3: (820,0,1332,512)
+Slice 4: (1230,0,1742,512)
+Slice 5: (1408,0,1920,512) [adjusted to fit image width]
+Row 2 (y=410):
+Slice 6: (0,410,512,922)
+Slice 7: (410,410,922,922)
+Slice 8: (820,410,1332,922)
+Slice 9: (1230,410,1742,922)
+Slice 10: (1408,410,1920,922)
+Row 3 (y=820):
+Slice 11: (0,820,512,1080) [adjusted to fit image height]
+Slice 12: (410,820,922,1080)
+Slice 13: (820,820,1332,1080)
+Slice 14: (1230,820,1742,1080)
+Slice 15: (1408,820,1920,1080)
+
+
+
+
+

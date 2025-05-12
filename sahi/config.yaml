@@ -1,0 +1,4 @@
+model_type: yolov8
+model_path: models/3k_TIP_s.pt
+model_device: cuda:0 # or 'cpu'
+model_confidence_threshold: 0.25

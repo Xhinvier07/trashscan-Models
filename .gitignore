@@ -1,0 +1,12 @@
+/.idea
+/.venv
+/rt-detr/models/model.safetensors
+/yolo/pycache
+/detectron2/detectron2
+
+
+
+
+
+
+
